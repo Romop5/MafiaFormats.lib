@@ -9,6 +9,7 @@ namespace MFFormat
 /**
     Parser for .mnu files. They store game menus for v1.3 of the game.
 */
+
 class DataFormatMNU: public DataFormat
 {
 public:
@@ -42,26 +43,35 @@ private:
     std::vector<Control> mControls;
 };
 
-bool DataFormatMNU::load(std::ifstream &srcFile)
+/**
+    Parser for menu.def file. It stores game menus for pre-1.3 versions of the game.
+*/
+
+class DataFormatMenuDEF: public DataFormat
 {
-    Header header = {};
-    read(srcFile, &header);
+public:
 
-    if (std::string(header.mMagic) != "Menu")
+    #pragma pack(push,1)
+    typedef struct
     {
-        return false;
-    }
+        uint32_t mUnknown;
+        char mType[4];
+        MFMath::Vec2 mPos;
+        float mScaleX;
+        float mScaleY;
+        uint32_t mTextId; // from Textdb_xx.def
+        uint32_t mTextColor;
+        uint32_t mBgColor;
+    } Control;
+    #pragma pack(pop)
 
-    for (uint32_t i = 0; i < header.mNumControls; i++)
-    {
-        Control control = {};
-        read(srcFile, &control);
+    virtual bool load(std::ifstream &srcFile) override;
+    inline std::vector<Control> getControls()   { return mControls; }
+    inline size_t getNumControls()              { return mControls.size(); }
 
-        mControls.push_back(control);
-    }
-
-    return true;
-}
+private:
+    std::vector<Control> mControls;
+};
 
 }
 
