@@ -1,16 +1,8 @@
-#ifndef OSG_UTILS_H
-#define OSG_UTILS_H
-
-#include <fstream>
-#include <osg/Transform>
-#include <osgGA/FirstPersonManipulator>
-#include <math.h>
-#include <utils.hpp>
+#include <utils/osg.hpp>
+#include <osg/Material>
 
 namespace MFUtil
 {
-
-/*** Call accept(v) on all children of n. */
 
 void traverse(osg::NodeVisitor *v,osg::Node &n)
 {
@@ -31,8 +23,6 @@ void rotationToVectors(osg::Quat rotation, osg::Vec3f &forw, osg::Vec3f &right, 
     right = m.preMult(right);
     up    = m.preMult(up);
 }
-
-/** Convert quaternion rotation to yaw, pitch, roll (Euler angles), in radians. */
 
 void quatToEuler(osg::Quat q, double &yaw, double &pitch, double &roll)
 {
@@ -57,8 +47,6 @@ void quatToEuler(osg::Quat q, double &yaw, double &pitch, double &roll)
     roll = asin(term3); 
 }
 
-/** Convert Euler rotation (yaw, pitch, roll) to quaternion, in radians. */
-
 osg::Quat eulerToQuat(double yaw, double pitch, double roll)
 {
     osg::Matrixd mat;
@@ -70,35 +58,51 @@ osg::Quat eulerToQuat(double yaw, double pitch, double roll)
     return mat.getRotate(); 
 }
 
-class MoveEarthSkyWithEyePointTransform: public osg::Transform
+SkyboxNode::SkyboxNode(): osg::MatrixTransform()
+{
+    mClassName = "SkyboxNode";
+    setName("camera relative");
+
+    // disable lights for backdrop sector:
+    osg::ref_ptr<osg::Material> mat = new osg::Material;
+
+    mat->setEmission(osg::Material::FRONT_AND_BACK,osg::Vec4f(1,1,1,1));
+    mat->setColorMode(osg::Material::OFF);
+    getOrCreateStateSet()->setAttributeAndModes(mat,osg::StateAttribute::ON | osg::StateAttribute::OVERRIDE);
+
+    getOrCreateStateSet()->setMode(GL_FOG,osg::StateAttribute::OFF);
+    getOrCreateStateSet()->setRenderBinDetails(-1,"RenderBin");                    // render before the scene
+    getOrCreateStateSet()->setMode(GL_DEPTH_TEST,osg::StateAttribute::OFF | osg::StateAttribute::OVERRIDE);  // don't write to depth buffer
+
+    // FIXME: disabling depth writing this way also disables depth test => bad (osg::ClearNode?)
+}
+
+bool SkyboxNode::computeLocalToWorldMatrix(osg::Matrix & matrix, osg::NodeVisitor * nv) const
 { 
-public: 
-    virtual bool computeLocalToWorldMatrix (osg::Matrix & matrix, osg::NodeVisitor * nv) const
+    osgUtil::CullVisitor * cv = dynamic_cast <osgUtil::CullVisitor*> (nv); 
+
+    if (nv) 
     { 
-        osgUtil::CullVisitor * cv = dynamic_cast <osgUtil::CullVisitor*> (nv); 
-
-        if (nv) 
-        { 
-            osg::Vec3 eyePointLocal = cv-> getEyeLocal (); 
-            matrix.preMult (osg::Matrix::translate (eyePointLocal)); 
-        } 
-
-        return true; 
+        osg::Vec3 eyePointLocal = cv-> getEyeLocal(); 
+        matrix.preMult(osg::Matrix::translate(eyePointLocal));
+        matrix.preMult(osg::Matrixd::scale(osg::Vec3(0.1,0.1,0.1)));   // FIXME: This is here to prevent view frustum culling, not nice.
     }
 
-    virtual bool computeWorldToLocalMatrix (osg :: Matrix & matrix, osg :: NodeVisitor * nv) const
+    return true; 
+}
+
+bool SkyboxNode::computeWorldToLocalMatrix(osg :: Matrix & matrix, osg :: NodeVisitor * nv) const
+{ 
+    osgUtil::CullVisitor * cv = dynamic_cast <osgUtil::CullVisitor*> (nv); 
+
+    if (nv)
     { 
-        osgUtil::CullVisitor * cv = dynamic_cast <osgUtil::CullVisitor*> (nv); 
+        osg :: Vec3 eyePointLocal = cv-> getEyeLocal (); 
+        matrix.postMult (osg :: Matrix :: translate (-eyePointLocal)); 
+    }
 
-        if (nv)
-        { 
-            osg :: Vec3 eyePointLocal = cv-> getEyeLocal (); 
-            matrix.postMult (osg :: Matrix :: translate (-eyePointLocal)); 
-        }
-
-        return true; 
-    } 
-};
+    return true; 
+} 
 
 osg::ref_ptr<osg::Image> addAlphaFromImage(osg::Image *img, osg::Image *alphaImg)
 {
@@ -118,7 +122,7 @@ osg::ref_ptr<osg::Image> addAlphaFromImage(osg::Image *img, osg::Image *alphaImg
     return dstImg;
 }
 
-osg::ref_ptr<osg::Image> applyColorKey(osg::Image *img, osg::Vec3f color, float err=0.01)
+osg::ref_ptr<osg::Image> applyColorKey(osg::Image *img, osg::Vec3f color, float err)
 {
     osg::ref_ptr<osg::Image> dstImg = new osg::Image;
 
@@ -140,24 +144,10 @@ osg::ref_ptr<osg::Image> applyColorKey(osg::Image *img, osg::Vec3f color, float 
     return dstImg;
 }
 
-class RobustIntersectionVisitor: public osgUtil::IntersectionVisitor
+RobustIntersectionVisitor::RobustIntersectionVisitor(osgUtil::Intersector* intersector):
+    osgUtil::IntersectionVisitor(intersector)
 {
-public:
-    RobustIntersectionVisitor(osgUtil::Intersector* intersector=0):
-        osgUtil::IntersectionVisitor(intersector)
-    {
-    }
-
-    virtual void apply(osg::MatrixTransform& transform) override
-    {
-        osgUtil::IntersectionVisitor::apply(transform);
-    }
-
-    virtual void apply(osg::Transform& /* transform */) override
-    {
-        return;
-    }
-};
+}
 
 std::string toString(osg::Vec3f v)
 {
@@ -181,7 +171,7 @@ std::string rotationToStr(osg::Quat q)
     return "{" + doubleToStr(y) + ", " + doubleToStr(p) + ", " + doubleToStr(r) + "}";
 }
 
-std::string matrixTransformToString(osg::Matrixd m, bool rotationInEuler=false)
+std::string matrixTransformToString(osg::Matrixd m, bool rotationInEuler)
 {
     osg::Vec3f trans, scale;
     osg::Quat rot, so;
@@ -203,34 +193,27 @@ std::string charArrayToStr(char *array, unsigned int length)
     return result;
 }
 
-class InfoStringVisitor: public osg::NodeVisitor
+InfoStringVisitor::InfoStringVisitor(): NodeVisitor()
 {
-public:
-    InfoStringVisitor(): NodeVisitor()
-    {
-        mFirst = true;
-    }
+    mFirst = true;
+}
 
-    void apply(osg::Node &n)
-    {
-        mInfo += n.className() + std::string(" (") + n.getName() + std::string("), parents: " + std::to_string(n.getNumParents()));
-    }
+void InfoStringVisitor::apply(osg::Node &n)
+{
+    mInfo += n.className() + std::string(" (") + n.getName() + std::string("), parents: " + std::to_string(n.getNumParents()));
+}
 
-    void apply(osg::Group &g)
-    {
-        apply(dynamic_cast<osg::Node&>(g));
-        mInfo += ", children: " + std::to_string(g.getNumChildren());
-    }
+void InfoStringVisitor::apply(osg::Group &g)
+{
+    apply(dynamic_cast<osg::Node&>(g));
+    mInfo += ", children: " + std::to_string(g.getNumChildren());
+}
 
-    void apply(osg::MatrixTransform &t)
-    {
-        apply(dynamic_cast<osg::Group&>(t));
-        mInfo += ", transform: " + matrixTransformToString(t.getMatrix(),true);
-    }
-
-    std::string mInfo;
-    bool mFirst;
-};
+void InfoStringVisitor::apply(osg::MatrixTransform &t)
+{
+    apply(dynamic_cast<osg::Group&>(t));
+    mInfo += ", transform: " + matrixTransformToString(t.getMatrix(),true);
+}
 
 std::string makeInfoString(osg::Node *n)
 {
@@ -239,52 +222,10 @@ std::string makeInfoString(osg::Node *n)
     return v.mInfo;
 }
 
-/**
-  User data that can be assigned to OSG objects.
-*/
-
-class UserData: public osg::Object
+void AssignUserDataVisitor::apply(osg::Node &n)
 {
-public:
-    UserData(): osg::Object() { strcpy(mLibraryName,"MFUtil"); strcpy(mClassName,"UserData"); };
-
-    virtual osg::Object *cloneType() const override                 { return 0;            };
-    virtual osg::Object *clone(const osg::CopyOp &) const override  { return 0;            };
-    virtual const char *libraryName() const override                { return mLibraryName; };
-    virtual const char *className() const override                  { return mClassName;   };
-
-protected:
-    char mLibraryName[255];
-    char mClassName[255];
-};
-
-class UserIntData: public UserData
-{
-public:
-    UserIntData(int value): UserData() { mValue = value; strcpy(mClassName,"UserIntData"); };
-
-    int mValue;
-};
-
-/**
-  Assigns user data to given node and all children;
-*/
-
-class AssignUserDataVisitor: public osg::NodeVisitor
-{
-public:
-    AssignUserDataVisitor(UserData *data): osg::NodeVisitor() { mData = data; };
-
-    virtual void apply(osg::Node &n) override
-    {
-        n.getOrCreateUserDataContainer()->addUserObject(mData);
-        MFUtil::traverse(this,n);
-    }
-
-protected:
-    osg::ref_ptr<UserData> mData;
-};
-
+    n.getOrCreateUserDataContainer()->addUserObject(mData);
+    MFUtil::traverse(this,n);
 }
 
-#endif
+}
