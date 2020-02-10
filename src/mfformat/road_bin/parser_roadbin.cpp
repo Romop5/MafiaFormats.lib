@@ -1,4 +1,10 @@
-#include <road_bin/parser_roadbin.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/road_bin/parser_roadbin.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
+#include <mfformat/road_bin/parser_roadbin.hpp>
 
 namespace MFFormat
 {

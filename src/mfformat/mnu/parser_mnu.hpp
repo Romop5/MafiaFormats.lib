@@ -1,7 +1,13 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/mnu/parser_mnu.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
 #ifndef FORMAT_PARSERS_MNU_H
 #define FORMAT_PARSERS_MNU_H
 
-#include <base_parser.hpp>
+#include <mfformat/base_parser.hpp>
 
 namespace MFFormat
 {

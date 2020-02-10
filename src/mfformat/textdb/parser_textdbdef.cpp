@@ -1,4 +1,10 @@
-#include <textdb/parser_textdbdef.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/textdb/parser_textdbdef.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
+#include <mfformat/textdb/parser_textdbdef.hpp>
 
 namespace MFFormat
 {

@@ -1,4 +1,10 @@
-#include <mnu/parser_mnu.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/mnu/parser_mnu.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
+#include <mfformat/mnu/parser_mnu.hpp>
 
 namespace MFFormat
 {

@@ -1,4 +1,10 @@
-#include <utils/bmp_analyser.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/utils/bmp_analyser.cpp
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
+#include <mfformat/utils/bmp_analyser.hpp>
 
 namespace MFFormat
 {

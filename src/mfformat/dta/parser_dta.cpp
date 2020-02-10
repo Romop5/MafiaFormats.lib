@@ -1,4 +1,10 @@
-#include <dta/parser_dta.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/dta/parser_dta.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
+#include <mfformat/dta/parser_dta.hpp>
 
 namespace MFFormat
 {

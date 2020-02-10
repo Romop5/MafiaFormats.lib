@@ -1,7 +1,14 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/dta/key_extractor.hpp
+* @author DavoSK <david.svitana@gmail.com>	
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
 #ifndef KEY_EXTRACTOR_DTA_H
 #define KEY_EXTRACTOR_DTA_H
 
-#include <base_parser.hpp>
+#include <mfformat/base_parser.hpp>
 #include <string.h>
 #include <vector>
 

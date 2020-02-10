@@ -1,4 +1,10 @@
-#include <utils/logger.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/utils/logger.cpp
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
+#include <mfformat/utils/logger.hpp>
 #include <iostream>
 
 namespace MFLogger

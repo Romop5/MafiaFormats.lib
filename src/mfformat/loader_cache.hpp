@@ -1,8 +1,15 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/loader_cache.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
 #ifndef LOADER_CACHE_H
 #define LOADER_CACHE_H
 
 #include <unordered_map>
-#include <utils/logger.hpp>
+#include <mfformat/utils/logger.hpp>
 
 #define LOADERCACHE_MODULE_STR "loader cache"
 

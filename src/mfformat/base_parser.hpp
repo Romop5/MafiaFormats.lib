@@ -1,3 +1,11 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/base_parser.hpp
+* @author Dominik Madarasz <zaklaus@outlook.com>	
+* @author Dominik Madarász <zaklaus@outlook.com>	
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
 #ifndef FORMAT_PARSERS_H
 #define FORMAT_PARSERS_H
 
@@ -8,8 +16,8 @@
 #include <vector>
 #include <unordered_map>
 #include <string>
-#include <utils/logger.hpp>
-#include <utils/math.hpp>
+#include <mfformat/utils/logger.hpp>
+#include <mfformat/utils/math.hpp>
 
 namespace MFFormat
 {

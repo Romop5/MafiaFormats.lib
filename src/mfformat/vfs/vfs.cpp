@@ -1,5 +1,12 @@
-#include <vfs/vfs.hpp>
-#include <utils/openmf.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/vfs/vfs.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
+#include <mfformat/vfs/vfs.hpp>
+#include <mfformat/utils/openmf.hpp>
 
 #ifdef OMF_SYSTEM_LINUX
 #include <unistd.h>

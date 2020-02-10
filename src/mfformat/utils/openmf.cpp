@@ -1,4 +1,11 @@
-#include <utils/openmf.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/utils/openmf.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
+#include <mfformat/utils/openmf.hpp>
 #include <fstream>
 
 namespace MFUtil

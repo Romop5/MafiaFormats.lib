@@ -1,3 +1,10 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/vfs/vfs.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
 #ifndef VFS_H
 #define VFS_H
 
@@ -5,10 +12,10 @@
 #include <string>
 #include <vector>
 
-#include <utils/os_defines.hpp>
-#include <dta/parser_dta.hpp>
+#include <mfformat/utils/os_defines.hpp>
+#include <mfformat/dta/parser_dta.hpp>
 
-#include <utils/logger.hpp>
+#include <mfformat/utils/logger.hpp>
 
 #define VFS_MODULE_STR "VFS"
 #define MAFIA_INSTALL_DIR "MAFIA_INSTALL_DIR"

@@ -1,7 +1,13 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/effects/parser_effects_bin.hpp
+* @author RoadTrain <pashtet92@bk.ru>	
+**/
 #ifndef FORMAT_PARSERS_EFFECTS_BIN_HPP
 #define FORMAT_PARSERS_EFFECTS_BIN_HPP
 
-#include <base_parser.hpp>
+#include <mfformat/base_parser.hpp>
 
 namespace MFFormat
 {

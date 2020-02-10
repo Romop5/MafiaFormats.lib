@@ -1,4 +1,10 @@
-#include <utils/osg.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/utils/osg.cpp
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
+#include <mfformat/utils/osg.hpp>
 #include <osg/Material>
 
 namespace MFUtil

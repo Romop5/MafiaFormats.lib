@@ -1,3 +1,9 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/utils/logger.hpp
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
 #ifndef LOGGER_H
 #define LOGGER_H
 

@@ -1,3 +1,9 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/utils/bmp_analyser.hpp
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
 #ifndef BMP_ANALYSER_H
 #define BMP_ANALYSER_H
 

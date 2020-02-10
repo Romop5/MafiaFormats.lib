@@ -1,4 +1,11 @@
-#include <base_loader.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/base_loader.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
+#include <mfformat/base_loader.hpp>
 
 namespace MFFormat
 {

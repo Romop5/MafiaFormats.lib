@@ -1,4 +1,10 @@
-#include <klz/parser_klz.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/klz/parser_klz.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
+#include <mfformat/klz/parser_klz.hpp>
 
 namespace MFFormat
 {

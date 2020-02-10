@@ -1,7 +1,13 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/cache_bin/parser_cachebin.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
 #ifndef FORMAT_PARSERS_CACHE_BIN_H
 #define FORMAT_PARSERS_CACHE_BIN_H
 
-#include <base_parser.hpp>
+#include <mfformat/base_parser.hpp>
 
 namespace MFFormat
 {

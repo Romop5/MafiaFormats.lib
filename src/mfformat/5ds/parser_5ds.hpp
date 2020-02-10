@@ -1,8 +1,14 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/5ds/parser_5ds.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
 #ifndef FORMAT_PARSERS_5DS_H
 #define FORMAT_PARSERS_5DS_H
 
-#include <base_parser.hpp>
-#include <utils/math.hpp>
+#include <mfformat/base_parser.hpp>
+#include <mfformat/utils/math.hpp>
 
 namespace MFFormat
 {

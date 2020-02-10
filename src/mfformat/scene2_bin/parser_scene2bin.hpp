@@ -1,9 +1,15 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/scene2_bin/parser_scene2bin.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
 #ifndef FORMAT_PARSERS_SCENE2_BIN_H
 #define FORMAT_PARSERS_SCENE2_BIN_H
 
 #include <cstring>
-#include <utils/math.hpp>
-#include <base_parser.hpp>
+#include <mfformat/utils/math.hpp>
+#include <mfformat/base_parser.hpp>
 
 namespace MFFormat
 {

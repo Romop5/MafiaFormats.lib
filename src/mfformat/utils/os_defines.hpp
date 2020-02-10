@@ -1,3 +1,9 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/utils/os_defines.hpp
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
 #ifndef OSDEFINES_H
 #define OSDEFINES_H
 

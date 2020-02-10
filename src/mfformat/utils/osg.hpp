@@ -1,3 +1,9 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/utils/osg.hpp
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
 #ifndef OSG_UTILS_H
 #define OSG_UTILS_H
 
@@ -7,7 +13,7 @@
 #include <osgUtil/IntersectionVisitor>
 #include <osgGA/FirstPersonManipulator>
 #include <math.h>
-#include <utils/openmf.hpp>
+#include <mfformat/utils/openmf.hpp>
 
 namespace MFUtil
 {

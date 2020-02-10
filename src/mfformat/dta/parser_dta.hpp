@@ -1,8 +1,14 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/dta/parser_dta.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
 #ifndef FORMAT_PARSERS_DTA_H
 #define FORMAT_PARSERS_DTA_H
 
-#include <base_parser.hpp>
-#include <utils/openmf.hpp>
+#include <mfformat/base_parser.hpp>
+#include <mfformat/utils/openmf.hpp>
 #include <string.h>
 #include <vector>
 

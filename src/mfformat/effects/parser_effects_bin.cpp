@@ -1,4 +1,10 @@
-#include <effects/parser_effects_bin.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/effects/parser_effects_bin.cpp
+* @author RoadTrain <pashtet92@bk.ru>	
+**/
+#include <mfformat/effects/parser_effects_bin.hpp>
 
 namespace MFFormat
 {

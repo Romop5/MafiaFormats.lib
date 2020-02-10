@@ -1,7 +1,13 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/6ds/parser_6ds.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
 #ifndef FORMAT_PARSERS_6DS_H
 #define FORMAT_PARSERS_6DS_H
 
-#include <base_parser.hpp>
+#include <mfformat/base_parser.hpp>
 
 namespace MFFormat
 {

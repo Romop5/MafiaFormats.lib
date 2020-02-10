@@ -1,4 +1,10 @@
-#include <cache_bin/parser_cachebin.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/cache_bin/parser_cachebin.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
+#include <mfformat/cache_bin/parser_cachebin.hpp>
 
 namespace MFFormat
 {

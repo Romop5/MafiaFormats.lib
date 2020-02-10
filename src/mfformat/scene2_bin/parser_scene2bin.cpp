@@ -1,4 +1,10 @@
-#include <scene2_bin/parser_scene2bin.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/scene2_bin/parser_scene2bin.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
+#include <mfformat/scene2_bin/parser_scene2bin.hpp>
 
 namespace MFFormat
 {

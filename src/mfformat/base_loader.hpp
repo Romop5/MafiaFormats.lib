@@ -1,12 +1,19 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/base_loader.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
 #ifndef OSG_LOADER_H
 #define OSG_LOADER_H
 
 #include <osg/MatrixTransform>
 #include <fstream>
-#include <utils/logger.hpp>
-#include <vfs/vfs.hpp>
-#include <loader_cache.hpp>
-#include <utils/math.hpp>
+#include <mfformat/utils/logger.hpp>
+#include <mfformat/vfs/vfs.hpp>
+#include <mfformat/loader_cache.hpp>
+#include <mfformat/utils/math.hpp>
 
 namespace MFGame { class ObjectFactory; }
 

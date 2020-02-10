@@ -1,4 +1,10 @@
-#include <check_bin/parser_checkbin.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/check_bin/parser_checkbin.cpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
+#include <mfformat/check_bin/parser_checkbin.hpp>
 
 namespace MFFormat
 {

@@ -1,10 +1,17 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/4ds/parser_4ds.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+* @author RoadTrain <pashtet92@bk.ru>	
+**/
 #ifndef FORMAT_PARSERS_4DS_H
 #define FORMAT_PARSERS_4DS_H
 
-#include <base_parser.hpp>
-#include <loader_cache.hpp>
+#include <mfformat/base_parser.hpp>
+#include <mfformat/loader_cache.hpp>
 #include <cstring>
-#include <utils/math.hpp>
+#include <mfformat/utils/math.hpp>
 
 namespace MFFormat
 {

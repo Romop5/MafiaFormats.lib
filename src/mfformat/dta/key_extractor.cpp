@@ -1,4 +1,10 @@
-#include <dta/key_extractor.hpp>
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/dta/key_extractor.cpp
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
+#include <mfformat/dta/key_extractor.hpp>
 
 namespace MFFormat
 {

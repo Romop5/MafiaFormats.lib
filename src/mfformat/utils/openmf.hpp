@@ -1,3 +1,10 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/utils/openmf.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+* @author Miloslav Číž <tastyfish@seznam.com>	
+**/
 #ifndef UTILS_H
 #define UTILS_H
 

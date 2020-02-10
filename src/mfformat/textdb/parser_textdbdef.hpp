@@ -1,7 +1,13 @@
+// MafiaHub - https://github.com/MafiaHub //
+
+/** 
+* @file mfformat/textdb/parser_textdbdef.hpp
+* @author Dominik Madarász <zaklaus@outlook.com>	
+**/
 #ifndef FORMAT_PARSERS_TEXTDB_DEF_H
 #define FORMAT_PARSERS_TEXTDB_DEF_H
 
-#include <base_parser.hpp>
+#include <mfformat/base_parser.hpp>
 #include <map>
 
 namespace MFFormat
